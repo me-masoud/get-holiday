@@ -37,12 +37,12 @@ class CatchHolidays
         fclose($holidaysFile);
     }
 
-    public function getHolidays()
+    public function getHolidays($year = '1400')
     {
         $baseUrl = "https://www.time.ir/fa/event/list/";
         for ($i = 1 ; $i< 13 ; $i++){
-            $html = $this->catchRequest($baseUrl , '0' , '1400' ,'1');
-            $holidays = $this->crawlHtml($html);
+            $html = $this->catchRequest($baseUrl , '0' , $year ,'1');
+            $this->crawlHtml($html);
             $this->writeInFile($html);
         }
 
